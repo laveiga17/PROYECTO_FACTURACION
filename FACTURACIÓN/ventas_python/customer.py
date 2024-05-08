@@ -53,7 +53,6 @@ class RegularClient(Client):
         # Método para imprimir los detalles del cliente minorista en la consola
         return {"dni":self.dni,"nombre":self.first_name,"apellido":self.last_name,"valor": self.discount}
 
-
 class VipClient(Client):
     def __init__(self, first_name="Consumidor", last_name="Final", dni="9999999999"):
         # Método constructor para inicializar los atributos de la clase VipClient
