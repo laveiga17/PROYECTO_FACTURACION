@@ -113,4 +113,4 @@ if __name__ == '__main__':
     print("Letra validada:", letra_validada)
     
     decimal_validado = valida.solo_decimales("Ingrese un decimal:", "Mensaje de error")
-    print("Decimal validado:", decimal_validad
+    print("Decimal validado:", decimal_validado)
