@@ -1,4 +1,5 @@
 from utilities import borrarPantalla, gotoxy
+
 import time
 
 class Menu:
@@ -19,42 +20,77 @@ class Menu:
         return opc   
 
 class Valida:
-    def solo_numeros(self,mensajeError,col,fil):
-        while True: 
-            gotoxy(col,fil)            
-            valor = input()
+    #Comprobar solo numero entero
+    def solonumero(self,col,fil):
+        while True:
+            gotoxy(col,fil);valor = input().strip()
             try:
                 if int(valor) > 0:
                     break
             except:
-                gotoxy(col,fil);print(mensajeError)
-                time.sleep(1)
-                gotoxy(col,fil);print(" "*20)
+                gotoxy(col,fil);print("Error")
+                time.sleep(3)
+                gotoxy(col,fil);print(" "*40)
         return valor
-
-    def solo_letras(self,mensaje,mensajeError): 
+    
+    #Comprobar letra
+    def sololetra(self,col,fil):
         while True:
-            valor = str(input("          ------>   | {} ".format(mensaje)))
-            if valor.isalpha():
-                break
-            else:
-                print("          ------><  | {} ".format(mensajeError))
+            gotoxy(col,fil);valor=input().strip()
+            try:
+                if valor.isalpha():
+                    break
+                else:
+                    gotoxy(col,fil);print("No es una cadena")
+                    time.sleep(3)
+                    gotoxy(col,fil);print(" "*40)
+            except:
+                gotoxy(col,fil);print("Error")
+                time.sleep(3)
+                gotoxy(col,fil);print(" "*40)
         return valor
-
-    def solo_decimales(self,mensaje,mensajeError):
+        
+    #Comprobar decimal
+    def solodecimal(self,col,fil):
         while True:
-            valor = str(input("          ------>   | {} ".format(mensaje)))
+            gotoxy(col,fil);valor=input().strip()
             try:
                 valor = float(valor)
-                if valor > float(0):
+                if valor > 0:
                     break
             except:
-                print("          ------><  | {} ".format(mensajeError))
+                gotoxy(col,fil);print("Error")
+                time.sleep(3)
+                gotoxy(col,fil);print(" "*40)
         return valor
     
-    def cedula():
-        pass
+    #Comprobar Cedula
+    def cedula(self,col,fil):
+        
+        while True:
+            gotoxy(col,fil);valor = input().strip()
+            try:
+                if valor.isdigit():
+                    if len(valor) == 10:
+                        break
+                    else:
+                        gotoxy(col,fil);print(" "*40)
+                        gotoxy(col,fil);print("Error")
+                        time.sleep(3)
+                        gotoxy(col,fil);print(" "*40)
+                else:
+                    gotoxy(col,fil);print("No es un cedula valida")
+                    time.sleep(3)
+                    gotoxy(col,fil);print(" "*40)
+            except:
+                gotoxy(col,fil);print("Error")
+                time.sleep(3)
+                gotoxy(col,fil);print(" "*40)
+        return valor
     
+   
+
+
 class otra:
     pass    
 
@@ -77,4 +113,4 @@ if __name__ == '__main__':
     print("Letra validada:", letra_validada)
     
     decimal_validado = valida.solo_decimales("Ingrese un decimal:", "Mensaje de error")
-    print("Decimal validado:", decimal_validado)
+    print("Decimal validado:", decimal_validad
